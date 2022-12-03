@@ -42,20 +42,28 @@ class Keyboard(Weather):
     @dp.callback_query_handler()
     async def callback(callback: types.callback_query):
         if callback.data == 'Минск':
-            return await callback.message.answer(f'Сейчас в Минске {Keyboard.get_weather("Минск")}')
+            return await callback.message.answer(f'Сейчас в Минске {Keyboard.get_weather("Минск")}°C')
         elif callback.data == 'Гомель':
-            return await callback.message.answer(f'Сейчас в Гомеле {Keyboard.get_weather("Гомель")}')
+            return await callback.message.answer(f'Сейчас в Гомеле {Keyboard.get_weather("Гомель")}°C')
         elif callback.data == 'Гродно':
-            return await callback.message.answer(f'Сейчас в Гродно {Keyboard.get_weather("Гродно")}')
+            return await callback.message.answer(f'Сейчас в Гродно {Keyboard.get_weather("Гродно")}°C')
         elif callback.data == 'Витебск':
-            return await callback.message.answer(f'Сейчас в Витебске {Keyboard.get_weather("Витебск")}')
+            return await callback.message.answer(f'Сейчас в Витебске {Keyboard.get_weather("Витебск")}°C')
         elif callback.data == 'Могилёв':
-            return await callback.message.answer(f'Сейчас в Могилёве {Keyboard.get_weather("Могилёв")}')
+            return await callback.message.answer(f'Сейчас в Могилёве {Keyboard.get_weather("Могилёв")}°C')
         elif callback.data == 'Брест':
-            return await callback.message.answer(f'Сейчас в Бресте {Keyboard.get_weather("Брест")}')
+            return await callback.message.answer(f'Сейчас в Бресте {Keyboard.get_weather("Брест")}°C')
 
 
 class Message:
+
+    @staticmethod
+    @dp.message_handler(commands='start')
+    async def greeting(message: types.Message):
+        await message.answer(f"Привет, {message.from_user.first_name} {message.from_user.last_name}!\n"
+                             f"Вот что я умею:\n"
+                             f"/weather - узнать погоду в городе")
+
     @staticmethod
     @dp.message_handler()
     async def message(message: types.Message):
