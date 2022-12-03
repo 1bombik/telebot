@@ -55,7 +55,7 @@ class Keyboard(Weather):
             return await callback.message.answer(f'Сейчас в Бресте {Keyboard.get_weather("Брест")}')
 
 
-class Message(Weather):
+class Message:
     @staticmethod
     @dp.message_handler()
     async def message(message: types.Message):
