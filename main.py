@@ -56,6 +56,7 @@ class Keyboard(Weather):
 
 
 class Message:
+    """Answers to the commands and messages"""
 
     @staticmethod
     @dp.message_handler(commands='start')
